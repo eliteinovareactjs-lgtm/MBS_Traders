@@ -13,8 +13,6 @@ export default function Header() {
   const isHome = location.pathname === "/";
 
   useEffect(() => {
-    // Scroll-spy only makes sense while we're on the home page,
-    // where the section anchors actually live.
     if (!isHome) return;
 
     const sections = navLinks
