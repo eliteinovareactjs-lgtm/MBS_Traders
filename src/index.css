@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+/* Tailwind v4 reads design tokens straight from CSS.
+   Anything defined here as --color-*, --font-*, --radius-* becomes
+   a matching utility class automatically (e.g. --color-forest -> bg-forest, text-forest). */
+@theme {
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --color-forest: #1e5631;
+  --color-forest-dark: #173f24;
+  --color-nav-green: #2f6b3e;
+  --color-sage: #93A374;
+  --color-sage-dark: #586B45;
+  --color-sage-darker: #4b5b3a;
+  --color-footer-sage: #9CAE81;
+  --color-journey-sage: #B9C69A;
+  --color-card-pink: #FCE7E7;
+  --color-card-mint: #E3F3E3;
+  --color-card-cream: #FBF3D9;
+  --color-ink: #20291f;
+  --color-muted: #5b6b52;
+
+  --radius-card: 26px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
