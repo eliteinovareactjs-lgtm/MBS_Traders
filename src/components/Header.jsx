@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, Menu, X } from "lucide-react";
 import { navLinks } from "../data/siteData";
 import { scrollToId, HEADER_OFFSET } from "../utils/ScrollToSection";
 
@@ -9,6 +9,7 @@ import logo from "../assets/logo.jpg";
 
 export default function Header() {
   const [activeHref, setActiveHref] = useState("#home");
+  const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
 
@@ -44,6 +45,20 @@ export default function Header() {
     };
   }, [isHome]);
 
+  // Close the mobile menu whenever the route changes (e.g. tapping a
+  // link that navigates to /about, or the browser back/forward button).
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
+
+  // Lock background scroll while the mobile menu is open.
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   const handleSectionClick = (e, href) => {
     // Already on the home page: scroll manually (with header offset)
     // instead of letting the browser jump the anchor natively —
@@ -54,6 +69,7 @@ export default function Header() {
     }
     // Not on home: let the Link navigate to "/#section" as normal;
     // Home's useScrollToHash hook takes over once it mounts.
+    setMenuOpen(false);
   };
 
   return (
@@ -61,7 +77,11 @@ export default function Header() {
       <div className="h-full flex items-center px-3 md:px-4">
 
         {/* ================= LOGO ================= */}
-        <Link to="/" className="flex items-center gap-2 flex-shrink-0">
+        <Link
+          to="/"
+          onClick={() => setMenuOpen(false)}
+          className="flex items-center gap-2 flex-shrink-0"
+        >
           <img
             src={logo}
             alt="MBS Traders logo"
@@ -72,12 +92,12 @@ export default function Header() {
             }}
           />
 
-          <span className="font-heading font-semibold text-[20px] tracking-tight text-ink whitespace-nowrap">
+          <span className="font-heading font-semibold text-[18px] md:text-[20px] tracking-tight text-ink whitespace-nowrap">
             MBS TRADERS
           </span>
         </Link>
 
-        {/* ================= SPACE + NAV ================= */}
+        {/* ================= DESKTOP NAV ================= */}
         <div className="flex-1 flex justify-end">
           <nav className="hidden md:block">
             <ul className="flex items-center gap-9">
@@ -123,22 +143,16 @@ export default function Header() {
           </nav>
         </div>
 
-        {/* ================= CART + LOGIN ================= */}
-        <div className="flex items-center gap-5 ml-8 flex-shrink-0">
-
-          {/* Cart */}
+        {/* ================= CART + LOGIN (desktop) ================= */}
+        <div className="hidden md:flex items-center gap-5 ml-8 flex-shrink-0">
           <a
             href="#"
             aria-label="Cart"
             className="text-[#3a7d44] hover:text-[#2d6636] transition-colors"
           >
-            <ShoppingCart
-              size={21}
-              strokeWidth={2.5}
-            />
+            <ShoppingCart size={21} strokeWidth={2.5} />
           </a>
 
-          {/* Login */}
           <button
             className="
               bg-[#3a7d44]
@@ -155,8 +169,97 @@ export default function Header() {
           >
             Login
           </button>
-
         </div>
+
+        {/* ================= MOBILE: HAMBURGER ================= */}
+        <div className="flex md:hidden items-center ml-auto flex-shrink-0">
+          <button
+            type="button"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+            className="text-[#25341F] p-1 -mr-1"
+          >
+            {menuOpen ? <X size={26} /> : <Menu size={26} />}
+          </button>
+        </div>
+      </div>
+
+      {/* ================= MOBILE MENU PANEL ================= */}
+      <div
+        className={`md:hidden fixed top-[70px] right-0 bottom-0 w-[72%] max-w-[320px] bg-white z-[890] transition-transform duration-300 ease-out ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <nav className="flex flex-col px-6 pt-6">
+          <ul className="flex flex-col">
+            {navLinks.map((link) => {
+              const isActive = link.route
+                ? location.pathname === link.href
+                : isHome && activeHref === link.href;
+
+              const linkClasses = `block py-3 text-[17px] font-semibold transition-colors duration-200 ${
+                isActive
+                  ? "text-[#3a7d44]"
+                  : "text-[#3a7d44] hover:text-[#2d6636]"
+              }`;
+
+              if (link.route) {
+                return (
+                  <li key={link.href}>
+                    <Link
+                      to={link.href}
+                      onClick={() => setMenuOpen(false)}
+                      className={linkClasses}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              }
+
+              return (
+                <li key={link.href}>
+                  <Link
+                    to={isHome ? link.href : `/${link.href}`}
+                    onClick={(e) => handleSectionClick(e, link.href)}
+                    className={linkClasses}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          <a
+            href="#"
+            aria-label="Cart"
+            className="text-[#3a7d44] hover:text-[#2d6636] transition-colors py-3"
+          >
+            <ShoppingCart size={22} strokeWidth={2.5} />
+          </a>
+
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="
+              mt-8
+              w-full
+              bg-[#3a7d44]
+              hover:bg-[#2d6636]
+              text-white
+              font-semibold
+              text-[15px]
+              px-5
+              py-3
+              rounded-md
+              transition-colors
+              duration-200
+            "
+          >
+            Login
+          </button>
+        </nav>
       </div>
     </header>
   );
