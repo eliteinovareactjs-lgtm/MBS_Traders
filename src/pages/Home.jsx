@@ -1,7 +1,6 @@
 import Header from "../components/Header";
 import FloatingSocial from "../components/FloatingSocial";
 import Hero from "../components/Hero";
-// import About from "../components/About";
 import Journey from "../components/Journey";
 import Categories from "../components/Categories";
 import WeAre from "../components/WeAre";
@@ -15,7 +14,6 @@ export default function Home() {
       <Header />
       <FloatingSocial />
       <Hero />
-      {/* <About /> */}
       <Journey />
       <Categories />
       <WeAre />
