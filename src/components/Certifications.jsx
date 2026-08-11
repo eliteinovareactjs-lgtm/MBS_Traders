@@ -12,7 +12,7 @@ import msmePdf from "../assets/msme.pdf";
 import dgftPdf from "../assets/dgft.pdf";
 import gstPdf from "../assets/gst.pdf";
 import fssaiPdf from "../assets/fssai.pdf";
-import apedaPdf from "../assets/apeda.pdf";
+import apedaPdf from "../assets/Apedapdf.pdf";
 
 const certifications = [
   {
