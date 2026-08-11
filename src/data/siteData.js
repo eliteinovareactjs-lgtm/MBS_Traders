@@ -35,7 +35,7 @@ export const heroSlides = [
 
 export const navLinks = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "/about", route: true }, // now a real page, not a section
+  { label: "About", href: "/about-page", route: true }, // now a real page, not a section
   { label: "Categories", href: "#categories" },
   { label: "Products", href: "#products" },
   { label: "Contact Us", href: "#contact" },
