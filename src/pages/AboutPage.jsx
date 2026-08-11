@@ -312,9 +312,7 @@ function CoreValues() {
   );
 }
 
-// ============================================
-// MAIN ABOUT PAGE
-// ============================================
+
 export default function AboutPage() {
   return (
     <>
