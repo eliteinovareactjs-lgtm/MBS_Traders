@@ -1,51 +1,108 @@
-import { MapPin, Phone, Mail } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
+import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { navLinks } from "../data/siteData";
 
-// lucide-react no longer ships brand/social icons, so these are small
-// inline SVGs instead — same 16px sizing as the lucide icons above.
-const FacebookIcon = (props) => (
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" {...props}>
-    <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z" />
-  </svg>
-);
-const InstagramIcon = (props) => (
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
-    <rect x="3" y="3" width="18" height="18" rx="5" />
-    <circle cx="12" cy="12" r="4" />
-    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-  </svg>
-);
-const TwitterIcon = (props) => (
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" {...props}>
-    <path d="M22 5.9c-.73.33-1.5.54-2.32.64a4.05 4.05 0 0 0 1.78-2.24 8.1 8.1 0 0 1-2.56.98 4.03 4.03 0 0 0-6.87 3.68A11.44 11.44 0 0 1 3.66 4.9a4.03 4.03 0 0 0 1.25 5.38 4 4 0 0 1-1.83-.5v.05a4.03 4.03 0 0 0 3.23 3.95 4.05 4.05 0 0 1-1.82.07 4.03 4.03 0 0 0 3.76 2.8A8.1 8.1 0 0 1 2 18.4a11.44 11.44 0 0 0 6.2 1.82c7.44 0 11.51-6.16 11.51-11.51 0-.18 0-.35-.01-.52A8.2 8.2 0 0 0 22 5.9Z" />
-  </svg>
-);
-const LinkedinIcon = (props) => (
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" {...props}>
-    <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.71h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.86-3.06-1.87 0-2.16 1.46-2.16 2.96V21h-4V9Z" />
-  </svg>
-);
+// ============================================================
+// FOOTER
+// ============================================================
 
 export default function Footer() {
   return (
-    <footer className="bg-footer-sage text-[#25341f] px-6 md:px-[60px] pt-14 pb-6 font-body">
-      <div className="max-w-[1160px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer
+      className="
+        w-full
+        bg-[#A4AB8B]
+        text-[#25341F]
+        border-t
+        border-[#536C46]
+        font-body
+      "
+    >
+
+      {/* ======================================================
+          TOP FOOTER CONTENT
+      ======================================================= */}
+      <div
+        className="
+          max-w-[1200px]
+          mx-auto
+          px-[31px]
+
+          pt-[47px]
+          pb-[36px]
+
+          grid
+          grid-cols-1
+          sm:grid-cols-2
+          lg:grid-cols-[270px_220px_275px_1fr]
+
+          gap-x-[34px]
+          gap-y-[40px]
+        "
+      >
+
+        {/* ====================================================
+            MBS TRADERS
+        ===================================================== */}
         <div>
-          <h4 className="font-heading text-xl mb-4 text-[#20291a]">MBS TRADERS</h4>
-          <p className="text-[14.5px] leading-[1.7] text-[#31401f]">
-            Delivering organic produce, fresh meat, and wholesome grains right
-            to your doorstep. Sustainability and quality at our core.
+          <h4
+            className="
+              font-heading
+              text-[24px]
+              leading-[29px]
+              font-bold
+              text-white
+              mb-[17px]
+            "
+          >
+            MBS TRADERS
+          </h4>
+
+          <p
+            className="
+              text-[15px]
+              leading-[1.7]
+              text-[#26341F]
+              max-w-[270px]
+            "
+          >
+            Delivering organic produce, fresh meat,
+            and wholesome grains right to your
+            doorstep. Sustainability and quality at
+            our core.
           </p>
         </div>
 
+
+        {/* ====================================================
+            QUICK LINKS
+        ===================================================== */}
         <div>
-          <h4 className="font-heading text-xl mb-4 text-[#20291a]">Quick Links</h4>
-          <ul className="space-y-2.5">
+          <h4
+            className="
+              font-heading
+              text-[24px]
+              leading-[29px]
+              font-bold
+              text-white
+              mb-[17px]
+            "
+          >
+            Quick Links
+          </h4>
+
+          <ul className="space-y-[10px]">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-[14.5px] text-[#31401f] hover:text-forest-dark"
+                  className="
+                    text-[15px]
+                    leading-[22px]
+                    text-[#26341F]
+                    hover:text-[#182416]
+                    transition-colors
+                  "
                 >
                   {link.label}
                 </a>
@@ -54,49 +111,274 @@ export default function Footer() {
           </ul>
         </div>
 
+
+        {/* ====================================================
+            CONTACT US
+        ===================================================== */}
         <div>
-          <h4 className="font-heading text-xl mb-4 text-[#20291a]">Contact Us</h4>
-          <p className="flex gap-2 items-start text-[14.5px] mb-3">
-            <MapPin size={16} className="mt-0.5 flex-shrink-0" />
-            No.28.LALBHAGADUR NAGAR, MASAKALIPALAYAM MAIN ROAD, COIMBATORE-
-            641004, TAMIL NADU, INDIA
-          </p>
-          <p className="flex gap-2 items-center text-[14.5px] mb-3">
-            <Phone size={16} /> +919790516014
-          </p>
-          <p className="flex gap-2 items-center text-[14.5px]">
-            <Mail size={16} /> mbstraders9@gmail.com
-          </p>
+          <h4
+            className="
+              font-heading
+              text-[24px]
+              leading-[29px]
+              font-bold
+              text-white
+              mb-[17px]
+            "
+          >
+            Contact Us
+          </h4>
+
+          {/* LOCATION */}
+          <div
+            className="
+              flex
+              items-start
+              gap-[8px]
+
+              text-[15px]
+              leading-[1.7]
+
+              text-[#26341F]
+
+              mb-[17px]
+            "
+          >
+            <span
+              className="flex-shrink-0 leading-none"
+              style={{ fontSize: "17px" }}
+              role="img"
+              aria-label="Location"
+            >
+              📍
+            </span>
+
+            <p>
+              No.28.LALBHAGADUR NAGAR,
+              <br />
+              MASAKALIPALAYAM MAIN ROAD,
+              <br />
+              COIMBATORE- 641004, TAMIL NADU,
+              <br />
+              INDIA
+            </p>
+          </div>
+
+
+          {/* PHONE */}
+          <div
+            className="
+              flex
+              items-center
+              gap-[8px]
+
+              text-[15px]
+
+              text-[#26341F]
+
+              mb-[17px]
+            "
+          >
+            <Phone
+              size={17}
+              className="flex-shrink-0 text-[#E82B83]"
+              fill="#E82B83"
+              strokeWidth={1.5}
+            />
+
+            <span>
+              +919790516014
+            </span>
+          </div>
+
+
+          {/* EMAIL */}
+          <div
+            className="
+              flex
+              items-center
+              gap-[8px]
+
+              text-[15px]
+
+              text-[#26341F]
+            "
+          >
+            <Mail
+              size={17}
+              className="flex-shrink-0 text-[#2878D7]"
+              strokeWidth={2}
+            />
+
+            <span>
+              mbstraders9@gmail.com
+            </span>
+          </div>
         </div>
 
+
+        {/* ====================================================
+            FOLLOW US
+        ===================================================== */}
         <div>
-          <h4 className="font-heading text-xl mb-4 text-[#20291a]">Follow Us</h4>
-          <div className="flex gap-3.5">
-            <a href="#" className="w-9 h-9 rounded-md bg-white flex items-center justify-center text-[#25341f]">
-              <FacebookIcon />
+          <h4
+            className="
+              font-heading
+              text-[24px]
+              leading-[29px]
+              font-bold
+              text-white
+              mb-[17px]
+            "
+          >
+            Follow Us
+          </h4>
+
+          <div
+            className="
+              flex
+              items-center
+              gap-[10px]
+              text-[#252A20]
+            "
+          >
+
+            {/* FACEBOOK */}
+            <a
+              href="#"
+              aria-label="Facebook"
+              className="
+                flex
+                items-center
+                justify-center
+                text-[#25341F]
+                hover:text-[#111]
+                transition-colors
+              "
+            >
+              <FaFacebook size={21} />
             </a>
-            <a href="#" className="w-9 h-9 rounded-md bg-white flex items-center justify-center text-[#25341f]">
-              <InstagramIcon />
+
+
+            {/* INSTAGRAM */}
+            <a
+              href="#"
+              aria-label="Instagram"
+              className="
+                flex
+                items-center
+                justify-center
+                text-[#25341F]
+                hover:text-[#111]
+                transition-colors
+              "
+            >
+              <FaInstagram size={21} />
             </a>
-            <a href="#" className="w-9 h-9 rounded-md bg-white flex items-center justify-center text-[#25341f]">
-              <TwitterIcon />
+
+
+            {/* TWITTER */}
+            <a
+              href="#"
+              aria-label="Twitter"
+              className="
+                flex
+                items-center
+                justify-center
+                text-[#25341F]
+                hover:text-[#111]
+                transition-colors
+              "
+            >
+              <FaTwitter size={21} />
             </a>
-            <a href="#" className="w-9 h-9 rounded-md bg-white flex items-center justify-center text-[#25341f]">
-              <LinkedinIcon />
+
+
+            {/* LINKEDIN */}
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              className="
+                flex
+                items-center
+                justify-center
+                text-[#25341F]
+                hover:text-[#111]
+                transition-colors
+              "
+            >
+              <FaLinkedin size={21} />
             </a>
+
           </div>
         </div>
       </div>
 
-      <div className="max-w-[1160px] mx-auto mt-9 pt-5 border-t border-black/15 flex justify-between flex-wrap gap-2.5 text-[13.5px] text-[#31401f]">
-        <span>© MBS TRADERS. All rights reserved.</span>
+
+      {/* ======================================================
+          BOTTOM LINE
+      ======================================================= */}
+      <div
+        className="
+          mx-[14px]
+          border-t
+          border-[#536C46]
+        "
+      />
+
+
+      {/* ======================================================
+          COPYRIGHT
+      ======================================================= */}
+      <div
+        className="
+          max-w-[1200px]
+          mx-auto
+
+          px-[31px]
+          py-[25px]
+
+          flex
+          flex-col
+          md:flex-row
+
+          md:items-center
+          md:justify-between
+
+          gap-[12px]
+
+          text-[15px]
+          leading-[20px]
+
+          text-white
+        "
+      >
+
+        {/* LEFT */}
         <span>
+          © MBS TRADERS. All rights reserved.
+        </span>
+
+
+        {/* RIGHT */}
+        <span className="md:text-right">
           @ 2026 Designed by{" "}
-          <a href="#" className="text-forest font-semibold">
+
+          <a
+            href="#"
+            className="
+              text-[#0047FF]
+              font-semibold
+              underline
+              hover:text-[#0035C7]
+            "
+          >
             Balasabari Software Developer
           </a>
-          , Vadapalani, Chennai
+
+          {" "} , Vadapalani, Chennai
         </span>
+
       </div>
     </footer>
   );
