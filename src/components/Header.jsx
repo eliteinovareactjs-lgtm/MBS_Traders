@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ShoppingCart } from "lucide-react";
 import { navLinks } from "../data/siteData";
-import { scrollToId, HEADER_OFFSET } from "./ScrollToSection";
+import { scrollToId, HEADER_OFFSET } from "../utils/ScrollToSection";
 
 // Try importing logo, fallback to public folder if needed
 import logo from "../assets/logo.jpg";
