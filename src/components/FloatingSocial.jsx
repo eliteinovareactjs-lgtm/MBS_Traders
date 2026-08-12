@@ -33,36 +33,38 @@ const WhatsAppIcon = (props) => (
 
 export default function FloatingSocial() {
   return (
-    <div className="fixed right-5 top-[95px] z-[900] flex flex-col items-center gap-[13px]">
+    <div className="fixed right-3 sm:right-5 top-[80px] sm:top-[95px] z-[900] flex flex-col items-center gap-[10px] sm:gap-[13px]">
       {/* WhatsApp */}
-      <a
-        href={whatsappHref}
+      
+        <a href={whatsappHref}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
-        className="w-[50px] h-[50px] rounded-full bg-white shadow-[0_3px_12px_rgba(0,0,0,0.15)] flex items-center justify-center text-[#25D366] hover:scale-105 transition-transform duration-200"
+        className="w-[44px] h-[44px] sm:w-[50px] sm:h-[50px] rounded-full bg-white shadow-[0_3px_12px_rgba(0,0,0,0.15)] flex items-center justify-center text-[#25D366] hover:scale-105 transition-transform duration-200"
       >
-        <WhatsAppIcon />
+        <WhatsAppIcon className="w-[22px] h-[22px] sm:w-[25px] sm:h-[25px]" />
       </a>
 
       {/* Phone */}
-      <a
-        href={phoneHref}
+      
+        <a href={phoneHref}
         aria-label="Call us"
-        className="w-[50px] h-[50px] rounded-full bg-white shadow-[0_3px_12px_rgba(0,0,0,0.15)] flex items-center justify-center text-[#1976d2] hover:scale-105 transition-transform duration-200"
+        className="w-[44px] h-[44px] sm:w-[50px] sm:h-[50px] rounded-full bg-white shadow-[0_3px_12px_rgba(0,0,0,0.15)] flex items-center justify-center text-[#1976d2] hover:scale-105 transition-transform duration-200"
       >
-        <Phone size={24} strokeWidth={2} fill="#1976d2" />
+        <Phone size={20} className="sm:hidden" strokeWidth={2} fill="#1976d2" />
+        <Phone size={24} className="hidden sm:block" strokeWidth={2} fill="#1976d2" />
       </a>
 
       {/* Email */}
-      <a
-        href={mailHref}
+      
+       <a href={mailHref}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Email us"
-        className="w-[50px] h-[50px] rounded-full bg-white shadow-[0_3px_12px_rgba(0,0,0,0.15)] flex items-center justify-center text-[#e53935] hover:scale-105 transition-transform duration-200"
+        className="w-[44px] h-[44px] sm:w-[50px] sm:h-[50px] rounded-full bg-white shadow-[0_3px_12px_rgba(0,0,0,0.15)] flex items-center justify-center text-[#e53935] hover:scale-105 transition-transform duration-200"
       >
-        <Mail size={24} strokeWidth={2} />
+        <Mail size={20} className="sm:hidden" strokeWidth={2} />
+        <Mail size={24} className="hidden sm:block" strokeWidth={2} />
       </a>
     </div>
   );
